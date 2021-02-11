@@ -1,6 +1,7 @@
 package com.github.frango28.tpmanager.command;
 
 import com.github.frango28.tpmanager.test.SelectorMenu;
+import com.github.frango28.tpmanager.util.Prefix;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -41,7 +42,7 @@ public final class CommandMng implements TabExecutor {
                 }
             }
         }
-
+        sender.sendMessage(Prefix.ERROR + "/tpm");
         return false;
     }
 

@@ -1,6 +1,6 @@
 name: TPManager
 version: ${project.version}
-main: com.github.frango28.tp_manager.TPManagerBukkit
+main: com.github.frango28.tpmanager.TPManagerBukkit
 api-version: 1.16
 authors: [ Frango28 ]
 load: POSTWORLD
