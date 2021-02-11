@@ -1,10 +1,10 @@
-package com.github.frango28.tp_manager.test;
+package com.github.frango28.tpmanager.test;
 
-import com.github.frango28.tp_manager.TPManagerBukkit;
-import com.github.frango28.tp_manager.TPPointManager;
-import com.github.frango28.tp_manager.TeleportPoint;
-import com.github.frango28.tp_manager.util.Prefix;
-import com.github.frango28.tp_manager.util.TeleportPointUtils;
+import com.github.frango28.tpmanager.TPManagerBukkit;
+import com.github.frango28.tpmanager.TPPointManager;
+import com.github.frango28.tpmanager.TeleportPoint;
+import com.github.frango28.tpmanager.util.Prefix;
+import com.github.frango28.tpmanager.util.TeleportPointUtils;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,11 +25,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class SelectorMenu implements Listener {
-    private final String MENU_NAME = ChatColor.DARK_AQUA+ChatColor.BOLD.toString() + "TP Point";
+    private final String MENU_NAME = ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "TP Point";
     private final Player p;
-    private Inventory inv;
     private final List<TeleportPoint> pointList;
-
+    private Inventory inv;
     private int page;
 
     public SelectorMenu(Player _p, int page) {

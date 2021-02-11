@@ -1,67 +1,75 @@
-package com.github.frango28.tp_manager;
+package com.github.frango28.tpmanager;
 
 import com.sun.istack.internal.NotNull;
-import org.bukkit.*;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
 
 public class TeleportPoint implements Comparable<TeleportPoint> {
     private final String name;
     private Material icon;
     private Location loc;
 
-//    WorldName/x/y/z/pitch/yaw/Material
-    public TeleportPoint(@NotNull String name,@NotNull String locData){
-        this.name=name;
-        String[] args=locData.split("/");
+    //    WorldName/x/y/z/pitch/yaw/Material
+    public TeleportPoint(@NotNull String name,String locData) {
+        this.name = name;
 
-        double x=0;
-        double y=0;
-        double z=0;
-        String worldName="none";
-        float pitch=0;
-        float yaw=0;
 
-        switch (args.length){
+        double x = 0;
+        double y = 0;
+        double z = 0;
+        String worldName = "none";
+        float pitch = 0;
+        float yaw = 0;
+
+        if(locData==null||locData.isEmpty()){
+            this.loc = new Location(Bukkit.getWorld(worldName), x, y, z, yaw, pitch);
+            return;
+        }
+
+        String[] args = locData.split("/");
+
+        switch (args.length) {
             default:
             case 7:
-                Material icon=Material.getMaterial(args[6],true);
-                if(icon!=null)this.icon=icon;
+                Material icon = Material.getMaterial(args[6], true);
+                if (icon != null) this.icon = icon;
             case 6:
                 try {
-                    yaw=Float.parseFloat(args[5]);
+                    yaw = Float.parseFloat(args[5]);
 //                    defaultの値が設定されているため省略
-                }catch (NumberFormatException ex){}
+                } catch (NumberFormatException ignored) {
+                }
             case 5:
                 try {
-                    pitch=Float.parseFloat(args[4]);
+                    pitch = Float.parseFloat(args[4]);
 //                    defaultの値が設定されているため省略
-                }catch (NumberFormatException ex){}
+                } catch (NumberFormatException ignored) {
+                }
             case 4:
                 try {
-                    z=Double.parseDouble(args[3]);
+                    z = Double.parseDouble(args[3]);
 //                    defaultの値が設定されているため省略
-                }catch (NumberFormatException ex){}
+                } catch (NumberFormatException ignored) {
+                }
             case 3:
                 try {
-                    y=Double.parseDouble(args[2]);
+                    y = Double.parseDouble(args[2]);
 //                    defaultの値が設定されているため省略
-                }catch (NumberFormatException ex){}
+                } catch (NumberFormatException ignored) {
+                }
             case 2:
                 try {
-                    x=Double.parseDouble(args[1]);
+                    x = Double.parseDouble(args[1]);
 //                    defaultの値が設定されているため省略
-                }catch (NumberFormatException ex){}
+                } catch (NumberFormatException ignored) {
+                }
             case 1:
-                worldName=args[0];
+                worldName = args[0];
             case 0:
         }
-        this.loc=new Location(Bukkit.getWorld(worldName),x,y,z,yaw,pitch);
+        this.loc = new Location(Bukkit.getWorld(worldName), x, y, z, yaw, pitch);
     }
 
     //    コントラクタ
@@ -84,7 +92,7 @@ public class TeleportPoint implements Comparable<TeleportPoint> {
 
     //    データをセット
     public Location getLocation() {
-        if(!this.loc.isWorldLoaded())return null;
+        if (!this.loc.isWorldLoaded()) return null;
         return this.loc;
     }
 
@@ -96,8 +104,8 @@ public class TeleportPoint implements Comparable<TeleportPoint> {
     }
 
     public void setIcon(Material icon) {
-        if(icon == null || icon == Material.AIR){
-            this.icon=Material.FILLED_MAP;
+        if (icon == null || icon == Material.AIR) {
+            this.icon = Material.FILLED_MAP;
             return;
         }
         this.icon = icon;
@@ -108,8 +116,8 @@ public class TeleportPoint implements Comparable<TeleportPoint> {
     }
 
     public String getWorldName() {
-        World w=this.loc.getWorld();
-        if(w==null)return "null";
+        World w = this.loc.getWorld();
+        if (w == null) return "null";
         return w.getName();
     }
 
@@ -117,7 +125,7 @@ public class TeleportPoint implements Comparable<TeleportPoint> {
         this.loc = loc;
     }
 
-    public boolean isLoaded(){
+    public boolean isLoaded() {
         return this.loc.isWorldLoaded();
     }
 
@@ -141,12 +149,12 @@ public class TeleportPoint implements Comparable<TeleportPoint> {
     @Override
     public String toString() {
         return getWorldName()
-                +"/"+loc.getX()
-                +"/"+loc.getY()
-                +"/"+loc.getZ()
-                +"/"+loc.getPitch()
-                +"/"+loc.getYaw()
-                +"/"+this.getIcon().toString();
+                + "/" + loc.getX()
+                + "/" + loc.getY()
+                + "/" + loc.getZ()
+                + "/" + loc.getPitch()
+                + "/" + loc.getYaw()
+                + "/" + this.getIcon().toString();
     }
 
     //    大小を返すメソッド

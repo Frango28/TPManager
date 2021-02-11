@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.frango28</groupId>
-    <artifactId>tp_manager</artifactId>
+    <artifactId>tpmanager</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 

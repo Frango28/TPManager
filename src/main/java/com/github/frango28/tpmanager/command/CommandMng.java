@@ -1,6 +1,6 @@
-package com.github.frango28.tp_manager.command;
+package com.github.frango28.tpmanager.command;
 
-import com.github.frango28.tp_manager.test.SelectorMenu;
+import com.github.frango28.tpmanager.test.SelectorMenu;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -15,9 +15,9 @@ public final class CommandMng implements TabExecutor {
 
     public CommandMng() {
 //        コマンド実装
-        addCommand(new ListCommand(),"list","tpmanager.settppoint");
-        addCommand(new TPPointAddCommand(),"set_tppoint","tpmanager.set_tppoint");
-        addCommand(new TPPointRemoveCommand(),"delete_tppoint","tpmanager.delete_tppoint");
+        addCommand(new ListCommand(), "list", "tpmanager.settppoint");
+        addCommand(new TPPointAddCommand(), "set_tppoint", "tpmanager.set_tppoint");
+        addCommand(new TPPointRemoveCommand(), "delete_tppoint", "tpmanager.delete_tppoint");
     }
 
     private void addCommand(TabExecutor _ext, String _arg, String _permission) {
@@ -27,8 +27,8 @@ public final class CommandMng implements TabExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(args.length==0){
-            if(sender instanceof Player){
+        if (args.length == 0) {
+            if (sender instanceof Player) {
                 return openMenu(sender);
             }
         }
@@ -61,9 +61,9 @@ public final class CommandMng implements TabExecutor {
         return list;
     }
 
-    private boolean openMenu(CommandSender sender){
-        Player p= (Player) sender;
-        new SelectorMenu(p,0);
+    private boolean openMenu(CommandSender sender) {
+        Player p = (Player) sender;
+        new SelectorMenu(p, 0);
         return true;
     }
 }

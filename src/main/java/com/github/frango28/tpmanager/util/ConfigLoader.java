@@ -1,4 +1,4 @@
-package com.github.frango28.tp_manager.util;
+package com.github.frango28.tpmanager.util;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;

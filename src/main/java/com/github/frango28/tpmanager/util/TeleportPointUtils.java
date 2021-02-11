@@ -1,6 +1,6 @@
-package com.github.frango28.tp_manager.util;
+package com.github.frango28.tpmanager.util;
 
-import com.github.frango28.tp_manager.TeleportPoint;
+import com.github.frango28.tpmanager.TeleportPoint;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
@@ -13,25 +13,26 @@ import java.util.List;
 import java.util.Objects;
 
 public class TeleportPointUtils {
-    public static List<String> materialList=new ArrayList<>();
+    public static List<String> materialList = new ArrayList<>();
+
     static {
         Arrays.stream(Material.values()).forEach(material -> materialList.add(material.toString()));
     }
 
-    public static ItemStack getIconItemStack(TeleportPoint p){
+    public static ItemStack getIconItemStack(TeleportPoint p) {
         ItemStack item = new ItemStack(p.getIcon());
 
         ItemMeta meta = item.getItemMeta();
 
 
-        if(p.isLoaded()){
+        if (p.isLoaded()) {
             Objects.requireNonNull(meta).setDisplayName(ChatColor.YELLOW + p.getName());
 
             List<String> lore = new ArrayList<>();
             lore.add(ChatColor.GRAY + Objects.requireNonNull(p.getLocation().getWorld()).getName());
             lore.add(ChatColor.GRAY + p.getXYZ());
             meta.setLore(lore);
-        }else{
+        } else {
             Objects.requireNonNull(meta).setDisplayName(ChatColor.RED + p.getName());
 
             List<String> lore = new ArrayList<>();
