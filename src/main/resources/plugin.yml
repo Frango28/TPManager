@@ -1,0 +1,24 @@
+name: TPManager
+version: ${project.version}
+main: com.github.frango28.tp_manager.TPManagerBukkit
+api-version: 1.16
+authors: [ Frango28 ]
+load: POSTWORLD
+
+commands:
+  tpmanager:
+    aliases: tpm
+    permission: tpmanager
+
+permissions:
+  tpmanager.list:
+    description: list permission
+  tpmanager.set_tppoint:
+    description: add permission
+  tpmanager.delete_tppoint:
+    description: delete permission
+  tpmanager.*:
+    children:
+      tpmanager.list: true
+      tpmanager.set_tppoint: true
+      tpmanager.delete_tppoint: true
