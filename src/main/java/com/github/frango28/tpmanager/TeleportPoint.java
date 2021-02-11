@@ -12,7 +12,7 @@ public class TeleportPoint implements Comparable<TeleportPoint> {
     private Location loc;
 
     //    WorldName/x/y/z/pitch/yaw/Material
-    public TeleportPoint(@NotNull String name,String locData) {
+    public TeleportPoint(@NotNull String name, String locData) {
         this.name = name;
 
 
@@ -23,7 +23,7 @@ public class TeleportPoint implements Comparable<TeleportPoint> {
         float pitch = 0;
         float yaw = 0;
 
-        if(locData==null||locData.isEmpty()){
+        if (locData == null || locData.isEmpty()) {
             this.loc = new Location(Bukkit.getWorld(worldName), x, y, z, yaw, pitch);
             return;
         }
