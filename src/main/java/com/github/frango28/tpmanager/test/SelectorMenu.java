@@ -151,11 +151,9 @@ public class SelectorMenu implements Listener {
         if (data == null) throw new NullPointerException("プレイヤーテレポート時のMapDataがNullです");
 
         p.closeInventory();
-        p.teleport(data.getLocation());
-        p.spigot().sendMessage(new ComponentBuilder().append(Prefix.SYSTEM.toString())
-                .append(p.getName() + "を")
-                .append("[" + data.getName() + "]").color(net.md_5.bungee.api.ChatColor.BOLD)
-                .append("にテレポートしました").color(net.md_5.bungee.api.ChatColor.RESET)
-                .create());
+        if(data.isLoaded()){
+            Bukkit.dispatchCommand(p,"tpm tp @s "+data.getName());
+        }
+
     }
 }

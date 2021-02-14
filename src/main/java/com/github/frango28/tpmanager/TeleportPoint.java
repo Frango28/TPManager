@@ -33,7 +33,7 @@ public class TeleportPoint implements Comparable<TeleportPoint> {
         switch (args.length) {
             default:
             case 7:
-                Material icon = Material.getMaterial(args[6], true);
+                Material icon = Material.getMaterial(args[6]);
                 if (icon != null) this.icon = icon;
             case 6:
                 try {

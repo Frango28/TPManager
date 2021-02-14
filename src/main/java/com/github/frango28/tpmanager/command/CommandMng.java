@@ -19,6 +19,7 @@ public final class CommandMng implements TabExecutor {
         addCommand(new ListCommand(), "list", "tpmanager.settppoint");
         addCommand(new TPPointAddCommand(), "set_tppoint", "tpmanager.set_tppoint");
         addCommand(new TPPointRemoveCommand(), "delete_tppoint", "tpmanager.delete_tppoint");
+        addCommand(new TPCommand(),"tp","tpmanager.tp");
     }
 
     private void addCommand(TabExecutor _ext, String _arg, String _permission) {
